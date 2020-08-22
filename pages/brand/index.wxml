@@ -1,0 +1,36 @@
+<!--index.wxml-->
+<!-- <view class="loading" wx:if="{{loading}}"></view> -->
+<view class="container">
+ <view class='search'>
+    <input class='searchinp' value='{{searchT}}' confirm-type="search" placeholder-style="color:#999" bindinput="bindKeyInput" bindconfirm="searchStore" type='text' placeholder=' 搜索品牌名'></input>
+    <view class='searchbth' bindtap='all'>取消</view>
+    <!-- <button class='searchbth'  size='mini'  bindtap='searchStore'>取消</button> -->
+  </view>
+  <scroll-view scroll-y="true" bindscrolltolower="searchScrollLower">
+    <navigator hover-class="none" url='/pages/activity/index?guestId={{item.id}}&brand={{item.brand}}' wx:for="{{items}}" wx:key="{{id}}" class='brand'>
+      <view class='logo'>
+        <image class='logos' src='{{item.logo}}'></image>
+        <text>{{item.brand}}</text>  
+      </view>
+      <scroll-view scroll-x="true">  
+      <view class='activity'  scroll-x="true" >
+        <block  wx:if="{{item.activities}}" >
+          <view class='activites item' wx:for="{{item.activities}}" wx:key="{{guestId}}">
+            <image class='actimg' wx:if="{{!item.picUrl}}"  mode='aspectFill'  src='https://i.ishangbin.com/img/user/images/none3.jpg'></image>  
+            <image class='actimg'wx:else  mode='aspectFill'  src='{{item.picUrl}}'></image>  
+            <text class='actname'>{{item.name}}</text>    
+            <text class='acttime'>{{item.time}}</text>  
+          </view>
+        </block>
+        <block  wx:else> 
+          <view class='activites'>
+            <image class='nothing' src='https://i.ishangbin.com/img/user/images/empty1.png'></image>  
+          </view>
+        </block> 
+      </view>
+      </scroll-view>  
+    </navigator>
+    <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>
+    <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+  </scroll-view> 
+</view>

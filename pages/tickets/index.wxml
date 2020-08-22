@@ -1,0 +1,94 @@
+<!--index.wxml-->
+<!-- <view class="loading" wx:if="{{loading}}"></view> -->
+<view class="container">
+  <view class='bg'>
+    <image class='logo' wx:if="{{data.picUrl}}" src='{{data.picUrl}}'></image>
+    <image class='logo' wx:else src='https://i.ishangbin.com/img/user/images/none3.png'></image>  
+    <image class='logo_title' src='https://i.ishangbin.com/img/user/images/newlogo.png'></image>
+  </view>
+  <view class='title'>
+    <image class='inlogo' wx:if="{{data.inviter.avatarUrl}}" src='{{data.inviter.avatarUrl}}'></image>
+    <image class='inlogo' wx:else src='https://i.ishangbin.com/img/user/images/avatar.png'></image>
+    <text class='nickname'>{{data.inviter.nickname}}送你一份礼包</text>
+    <form report-submit='true' bindsubmit="submit" wx:if="{{data.state == '1'}}">
+      <button class='number' wx:if="{{data.needPhone}}" form-type="submit" open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">立即领取</button>
+      <button class='number'  wx:else form-type="submit">立即领取</button>
+      <text class='touse' wx:if="{{data.state == '1'}}">请在{{data.expiredTime}}之前领取</text>
+    </form>
+    <button class='over number' wx:else>{{data.state ? "该礼包已过期" : "礼包已被领完啦"}}</button>
+    <text bindtap='switchTab' class='touse user' wx:if="{{data.state != '1'}}">领到的礼券可在<text>我的权益</text>查看</text>
+    
+  </view>
+  <view class='list'>礼包详情</view>
+  <view class='coupons'>
+    <view class='coupon' wx:for="{{data.benefits}}" wx:key="{{id}}"  >
+      <navigator hover-class="none" wx:if="{{item.category == 1016}}" id='{{item.id}}' url='/pages/coupondetail/index?id={{item.id}}&&brand={{brand}}'>
+        <image class='couponpic'  mode='aspectFill'  wx:if="{{item.picUrl}}" src='{{item.picUrl}}'></image>
+        <image class='couponpic' wx:elif="{{item.couponCategory == 901||  item.couponCategory == 903 ||  item.couponCategory == 9011  }}" src='https://i.ishangbin.com/img/user/images/coupon.png'></image>
+        <image class='couponpic ' wx:else src='https://i.ishangbin.com/img/user/images/coupondetail.png'></image>
+        <view class='right'>
+          <view class='name'>{{item.name}}</view>
+          <view class='useStrategy' wx:if="{{item.useStrategy}}">{{item.useStrategy}}</view>
+          <view class='times' wx:if="{{item.times}}">{{item.times}}</view>
+        </view>
+      </navigator>
+      <block wx:else>
+        <image class='couponpic' wx:if="{{item.picUrl}}" src='{{item.picUrl}}'></image>
+        <image class='couponpic' wx:elif="{{item.category == 1017 ||item.category == 1014  }}" src='https://i.ishangbin.com/img/user/images/coupon.png'></image>
+        <image class='couponpic pointpic' wx:elif="{{item.category == 1015 }}" src='https://i.ishangbin.com/img/user/images/point.png'></image>
+        <view class='right'>
+          <view class='point' wx:if="{{item.category == 1015}}">{{item.amount}}积分</view>
+          <view class='name' wx:else>{{item.name}}</view>
+          <view class='useStrategy' wx:if="{{item.useStrategy}}">{{item.useStrategy}}</view>
+          <view class='times' wx:if="{{item.times}}">{{item.times}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class='user' wx:if="{{data.obtains}}">
+    <view class='coupontitle'>
+      <text class='list'>领取记录</text>
+    </view>
+     <view class='item'>
+      <view class='useritem' wx:for="{{data.obtains}}" wx:key="{{nickname}}">
+        <image class='userlogo' wx:if="{{item.avatarUrl}}" src='{{item.avatarUrl}}'></image>
+        <image class='userlogo' wx:else src='https://i.ishangbin.com/img/user/images/avatar.png'></image>
+        <text class='username'>{{item.nickname}}</text>
+        <text class='usertime'>{{item.createTime}}</text>
+      </view>
+      <navigator  hover-class="none" class='more' url='/pages/receive/index?activityId={{activityId}}'>查看全部</navigator>
+     </view>
+  </view>
+  <view class='brand' wx:if="{{data.brand}}">
+    <view class='list'>品牌介绍</view>
+    <view wx:if="{{data.brand.slogan}}" class='slogan'>{{data.brand.slogan}}</view>
+    <view wx:if="{{data.brand.introduction}}" class='introduction'>{{data.brand.introduction}}</view>
+    <image wx:if="{{data.brand.picUrls}}" wx:for="{{data.brand.picUrls}}" src='{{item}}' wx:key="{{index}}"></image>
+    <view class='list' wx:if="{{data.brand.shops}}">分店列表</view>
+      <view class='shops' wx:for="{{data.brand.shops}}" wx:key="{{id}}">
+        <view class='shopname'>{{item.name}}</view>
+        <view class='tel'>{{item.tel}}</view>
+        <view class='address'>{{item.address}}</view>
+      </view>
+  </view>
+  <view class=" tips {{isget?'Show':'Hide'}}" catchtouchmove="preventTouchMove">
+    <view class=" inviters ">
+    </view>
+    <view class='Rectangle-8' >
+      <view class='title3'>
+        <view class='close' bindtap='closebtn'></view>
+        <text class='titleText'>操作成功</text>
+      </view>
+      <text class='message'>请在“个人中心”查看权益</text>
+      <navigator hover-class="none" class='know' url='/pages/benefit/index?guestId={{guestId}}'>我知道啦</navigator>
+    </view>
+  </view>
+  <view class='tab'>
+      <view class='show'>
+        <view class='close'  bindtap='tobrand'>
+          <image src='/images/group.png'></image>
+        首页</view>  
+    </view>
+</view>
+    
+</view>

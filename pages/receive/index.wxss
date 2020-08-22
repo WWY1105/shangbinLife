@@ -1,0 +1,45 @@
+.container {
+    padding: 0 ;
+    padding-bottom: 60px;
+    overflow-x: hidden;
+}
+
+
+.user {
+  width: 100%;
+  padding-bottom: 50rpx;
+  /* border-bottom: 1px solid #ccc; */
+}
+.useritem {
+  width: 80%;
+  margin: 10rpx auto;
+  height: 100rpx;
+  line-height: 80rpx;
+  padding: 15rpx 30rpx 30rpx;
+  position: relative;
+  /* border-bottom: 1px solid #ccc; */
+}
+.userlogo {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  float: left;
+}
+.username {
+  margin-left: 15rpx;
+  width: 80%;
+  font-size: 28rpx;
+  display: inline-block;
+  /* border-bottom: 1px solid #ccc; */
+}
+.usertime {
+  /* float: right; */
+  font-size: 28rpx;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  right: 20rpx;
+  color: #ccc;
+  display: inline-block;
+  /* border-bottom: 1px solid #ccc; */
+}

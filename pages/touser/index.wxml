@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<!-- <view class="loading" wx:if="{{loading}}"></view> -->
+<view class="container">
+  <web-view src="https://m.sharejoy.cn/admin.html#/user?id={{guestId}}"></web-view>
+   {{guestId}}
+</view>
