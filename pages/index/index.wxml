@@ -1,17 +1,39 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <!--<button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>-->
-    <!--<block wx:else>-->
-      <!--<image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>-->
-      <!--<text class="userinfo-nickname">{{userInfo.nickName}}</text>-->
-    <!--</block>-->
-  <!--</view>-->
-  <!--<view class="usermotto">-->
-    <!--<text class="user-motto">{{motto}}</text>-->
-    <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 立即体验 </button>
+  <view class="bg"></view>
+  <!-- 搜索框 -->
+  <view class="searchBox flexSpace">
+    <view class="city">
+     <text> 上海</text>
+     <image class="arrowDown" src="https://life.sharejoy.cn/images/arrowDown.png"></image>
+    </view>
+    <view class="inputBox"></view>
+  </view>
+  <!-- 轮播图 -->
+  <view class="page-section page-section-spacing swiper">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item>
+          <view class="swiper-item {{item}}"></view>
+        </swiper-item>
+      </block>
+    </swiper>
   </view>
 
-  <!--<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 获取手机号</button>-->
-
+  <!-- 推荐商家 -->
+  <view class="recommandBox">
+    <view class="title">推荐商家</view>
+    <view class="listBox">
+      <view class="eachShop flexStart" wx:for="{{shops}}">
+        <image class="shopImg" src="{{item.picUrl}}"></image>
+        <view class="descBox">
+          <view class="shopName">{{item.name}}</view>
+          <view class="otherDesc flexSpace">
+            <view class="type">{{item.cuisineText}} | {{item.businessZoneText}}</view>
+            <view class="perPrice">{{item.avgprice}}/人</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

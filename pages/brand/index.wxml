@@ -7,7 +7,7 @@
     <!-- <button class='searchbth'  size='mini'  bindtap='searchStore'>取消</button> -->
   </view>
   <scroll-view scroll-y="true" bindscrolltolower="searchScrollLower">
-    <navigator hover-class="none" url='/pages/activity/index?guestId={{item.id}}&brand={{item.brand}}' wx:for="{{items}}" wx:key="{{id}}" class='brand'>
+    <navigator hover-class="none" url='/pages/activity/index?guestId={{item.id}}&brand={{item.brand}}' wx:for="{{items}}" wx:key="index" class='brand'>
       <view class='logo'>
         <image class='logos' src='{{item.logo}}'></image>
         <text>{{item.brand}}</text>  

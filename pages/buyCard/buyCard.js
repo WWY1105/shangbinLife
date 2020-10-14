@@ -1,24 +1,24 @@
-// pages/user/index.js
-const app=getApp()
+// pages/buyCard/buyCard.js
+const app=getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        parentThis:this,
-        cards:[],
-        user:{}
+        instructions:'',
+        activityId:'',
+        data:{}
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.setData({
-            parentThis:this
-        })
-        this.getMyCard()
+        if(options.activityId){
+            this.setData({activityId:options.activityId
+            })
+        }
     },
 
     /**
@@ -27,12 +27,12 @@ Page({
     onReady: function () {
 
     },
-   
+
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-     this.getUser()
+        this.getActivity()
     },
 
     /**
@@ -46,7 +46,7 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-        
+
     },
 
     /**
@@ -69,23 +69,20 @@ Page({
     onShareAppMessage: function () {
 
     },
-    againRequest(){
-        this.getUser()
-    },
-    getUser(){  
-        let url='/user';
-        let json={}
+    // 获取活动详情
+    getActivity(){
+        let url='/cards/activity/'+this.data.activityId;
+        let json={};
         app.request('get', url, json, (res) => {
-           this.setData({user:res})
-        },(err)=>{},(fail)=>{},this)
+            let instructions='';
+            if(res.instructions){
+                instructions=app.convertHtmlToText(res.instructions)
+            }
+            this.setData({data:res,instructions})
+        })
     },
-    getMyCard(){  
-        let url='/benefits/cards';
-        let json={}
-        app.request('get', url, json, (res) => {
-           this.setData({cards:res})
-        },(err)=>{},(fail)=>{})
+    // 去购买
+    toBuy(){
+        let url=""
     },
-
-  
 })

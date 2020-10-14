@@ -1,0 +1,10 @@
+<view wx:if="{{showImg}}">
+  <view class="modal " wx:if="{{showImg}}">
+  <view class="content" id="authpop">
+    <view class="iconfont icon-close" bindtap="closeShowImg"></view>
+    <!-- <image   src="../../img/userInfoAuth.png" mode="aspectFit"></image> -->
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" bindtap="click" class="authBtn">授权</button>
+  </view>
+  </view>
+</view>
+

@@ -1,45 +1,50 @@
-<!--index.wxml-->
-<!-- <view class="loading" wx:if="{{loading}}"></view> -->
-<view class="container">
-   <view class='title'>
-    <image class='userlogo' wx:if="{{data.avatarUrl}}" src='{{data.avatarUrl}}'></image>
-    <image class='userlogo' wx:else src='https://i.ishangbin.com/img/user/images/avatar.png'></image>
-    <view class='userinfo'>
-      {{data.nickname}}
-      <view class='phone'>
-      {{data.phone}}
-      <!-- <navigator class='update' url='/pages/phone/index'>修改</navigator> -->
-      </view>
+<!--pages/user/index.wxml-->
+<!-- 用户信息 -->
+<view class="userBox flexCenter">
+    <image class="userImg" src="{{user.avatarUrl}}"></image>
+    <view class="userName">{{user.nickname}}</view>
+    <view class="userPhone flexStart">手机号：
+        <view wx:if="{{phone}}">{{phone}}</view>
+        <view wx:else class="toBindPhone">授权手机号</view>
     </view>
-   </view>
-   <scroll-view scroll-y="true" bindscrolltolower="searchScrollLower">
-    <view class='brand'>
-      <navigator url='/pages/benefit/index?guestId={{item.guestId}}' hover-class="none" wx:for="{{items}}" wx:key="{{item.guestId}}">
-          <view class='items'>
-            <image class='brandlogo' src='{{item.logo}}'></image>
-            <view class='brandname'>{{item.brand}}</view>
-            <view class='detail'>
-              <view class='item'>
-                余额
-                <text>{{item.charge}}</text>
-              </view>
-              <view class='item'>
-                积分
-                <text>{{item.point || 0}}</text>
-              </view>
-              <view class='item'>
-                代用币
-                <text>{{item.reward || 0}}</text>
-              </view>
-              <view class='item'>
-                优惠券
-                <text>{{item.couponCount || 0}}张</text>
-              </view>
-            </view>
-          </view>
-      </navigator>
-    </view>
-    <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>
-    <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
-  </scroll-view> 
 </view>
+<!-- 导航 -->
+<view class="navBox">
+    <!-- <view class="eachList flexSpace">
+        <view class="left flexStart">
+            <image class="navIcon"></image>
+            <text>我的收益</text>
+        </view>
+        <view class="arrowRight"></view>
+    </view> -->
+    <view class="eachList flexSpace">
+        <view class="left flexStart">
+            <image class="navIcon"></image>
+            <text>我的订单</text>
+        </view>
+        <view class="arrowRight"></view>
+    </view>
+</view>
+<!-- 我的共享卡 -->
+<view class="shareCard">
+    <view class="title flexStart">
+        <image class="cardIcon"></image>
+        <text> 我的共享卡</text>
+    </view>
+    <view class="contentBox">
+        <view class="shopName">洪亮音乐火锅</view>
+        <view class="cardContent">
+            <view class="cardName">xxx共享卡</view>
+           <view class="cardDesc flexSpace">
+                <view>共5张优惠券</view>
+                <view class="price">
+                    当前 <text class="num">9</text>折
+                </view>
+           </view>
+        </view>
+    </view>
+</view>
+
+
+
+<login parentThis="{{parentThis}}" id="authpop"></login>

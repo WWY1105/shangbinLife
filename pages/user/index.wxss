@@ -1,81 +1,100 @@
-.container {
-    padding: 0 ;
-    display: flex;
-    padding-bottom: 30rpx;
+/* pages/user/index.wxss */
+page {
+    padding: 0 24rpx;
+    padding-top: 96rpx;
+    box-sizing: border-box;
+    background: #F5F5F5;
+}
+
+.userBox {
+    width: 100%;
+    height: 234rpx;
+    background: #FFFFFF;
+    border-radius: 10rpx;
+    position: relative;
+    text-align: center;
     flex-direction: column;
 }
-.title {
-  height: 120rpx;
-  width: 686rpx;
-  background: #fa6450;
-  padding: 40rpx 32rpx;
-  font-size: 32rpx;
-  letter-spacing: 0.3px;
-  color: #ffffff;
+
+.userBox .userImg {
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 50%;
+    top: -65rpx;
+    left: 50%;
+    margin-left: -65rpx;
+    position: absolute;
 }
-.title .userlogo {
-  width: 120rpx;
-  height: 120rpx;
-  border-radius: 50%;
-  margin-right: 40rpx;
-  vertical-align: top;
+
+.userBox .userName {
+    font-size: 32rpx;
+    font-weight: bolder;
+    color: #3E3E3E;
+    padding-top: 100rpx;
+    padding-bottom: 25rpx;
 }
-.title .userinfo {
-  display: inline-block;
+
+.userBox .userPhone {
+    color: #999;
+    font-size: 28rpx;
 }
-.userinfo .phone {
-  margin-top: 20rpx;
-  
+.toBindPhone{
+    border: 1rpx solid #999;
+    border-radius: 10rpx;
+    padding:0 4rpx ;
 }
-.userinfo .update {
-  margin-top: 20rpx;
-  display: inline-block;
-  margin-left: 20rpx;
-  border-bottom: 1px solid #fff;
+.navBox{
+    background-color: #fff;
+    border-radius: 10rpx;
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    font-size: 30rpx;
 }
-.brand .items {
-  width: 686rpx;
-  height: 274rpx;
-  border-bottom: 20rpx solid #f0f0f0;
-  padding: 40rpx 32rpx;
+.navBox .navIcon,.cardIcon{
+width: 40rpx;
+height: 30rpx;
 }
-.brand .items .brandlogo {
-  width: 121rpx;
-  height: 120rpx;
-  border-radius: 10rpx;
-  vertical-align: middle;
-  margin-right: 38rpx;
+.navBox .eachList{
+    padding: 35rpx 0;
 }
-.brand .items .brandname {
-  display: inline-block;
-  font-size: 36rpx;
-  font-weight: bold;
-  letter-spacing: 0.3px;
-  color: #000000;
+.navBox .eachList:nth-child(1){
+    border-bottom: 1rpx solid #F5F5F5;
 }
-.brand .items .detail {
-  width: 100%;
-  height: 132rpx;
-  margin-top: 40rpx;
+.shareCard{
+    background-color: #fff;
+    border-radius: 10rpx;
+    padding: 15rpx 24rpx;
 }
-.detail .item {
-  width: 25%;
-  height: 100%;
-  font-size: 24rpx;
-  color: #000;
-  display: inline-block;
-  text-align: center;
+.shareCard .title{
+    font-size: 30rpx;
+    color: #333333;
+    border-bottom: 1rpx solid #F5F5F5;
+    padding-bottom: 23rpx;
 }
-.detail .item text {
-  margin-top: 20rpx;
-  font-size: 36rpx;
-  display: block;
-  color: #000;
-  font-weight: bold;
-} 
-.loading {
-  padding: 30rpx 10rpx 0rpx 10rpx ;
-  text-align: center;
-  font-size: 30rpx;
-  color: #999;
+.shareCard .contentBox{
+    color: #333;
+    font-size: 24rpx;
+    margin-bottom: 30rxp;
+}
+.shareCard .shopName{
+    margin-bottom: 30rpx;
+}
+.shareCard .contentBox .cardContent{
+background: linear-gradient(88deg, #525263, #282933);
+border-radius: 10rpx 10rpx 0rpx 0rpx;
+padding: 24rpx 30rpx;
+box-sizing: border-box;
+
+color: #EEC993;
+}
+.shareCard .contentBox .cardContent .cardName{
+    font-weight: bold;
+    margin-bottom: 20rpx;
+}
+.shareCard .contentBox .cardContent .cardDesc{
+    align-items: flex-end;
+}
+.shareCard .contentBox .cardContent .num{
+font-size: 48rpx;
+font-weight: bolder;
 }

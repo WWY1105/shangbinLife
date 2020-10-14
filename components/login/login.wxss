@@ -1,0 +1,30 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999999999999999999999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.modal .content {
+  position: relative;
+  background-color: #fff;
+  width: 484rpx;
+  height: 580rpx;
+  border-radius: 20rpx;
+}
+
+.authBtn {
+  width: 229rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  background: #FFBB59;
+  border-radius: 10rpx;
+}

@@ -1,24 +1,18 @@
-// pages/user/index.js
-const app=getApp()
+// pages/coupon/myCoupon/myCoupon.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        parentThis:this,
-        cards:[],
-        user:{}
+
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.setData({
-            parentThis:this
-        })
-        this.getMyCard()
+
     },
 
     /**
@@ -27,12 +21,12 @@ Page({
     onReady: function () {
 
     },
-   
+
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-     this.getUser()
+
     },
 
     /**
@@ -46,7 +40,7 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-        
+
     },
 
     /**
@@ -68,24 +62,5 @@ Page({
      */
     onShareAppMessage: function () {
 
-    },
-    againRequest(){
-        this.getUser()
-    },
-    getUser(){  
-        let url='/user';
-        let json={}
-        app.request('get', url, json, (res) => {
-           this.setData({user:res})
-        },(err)=>{},(fail)=>{},this)
-    },
-    getMyCard(){  
-        let url='/benefits/cards';
-        let json={}
-        app.request('get', url, json, (res) => {
-           this.setData({cards:res})
-        },(err)=>{},(fail)=>{})
-    },
-
-  
+    }
 })
